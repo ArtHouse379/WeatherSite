@@ -15,7 +15,7 @@
         <div class="header__top">
             <a class="header__logo" href="#">MY WEATHER</a>
             <div class="header__search">
-                <input type="search" name="geoposition" id="city-search" placeholder="Input your city">
+                <input type="search" name="geoposition" id="city-search" placeholder="city name (exmp. 'Odesa')">
             </div>
         </div>
 
@@ -26,31 +26,9 @@
 
     </header>
 
-    <div class="container">
+    <main class="container">
 
-        <article class="current__weather">
-
-            <div class="current__header">
-                <h5 class="header--name">CURRENT WEATHER</h5>
-                <h5 class="current__header--date" id="current_date">30.06.2018</h5>
-            </div>
-
-            <div class="current__content">
-                <div>
-                    <img src="img/sun.png" alt="alt">
-                    <p>Sunny</p>
-                </div>
-                <div>29 C</div>
-                <div>
-                    <p>Sunrise:</p>
-                    <p>Sunset:</p>
-                    <p>Duration:</p>
-                </div>
-            </div>
-
-        </article>
-
-        <div class="fivedays__weather">
+        <article class="fivedays__weather">
 
             <div class="fivedays__item">
                 <h4 class="item__day">TONIGTH</h4>
@@ -92,7 +70,7 @@
                 <p class="item__wind">Clear, Warm</p>
             </div>
 
-        </div>
+        </article>
 
         <article class="hourly__weather">
 
@@ -182,25 +160,9 @@
 
         </article>
 
-        <article class="error">
+    </main>
 
-            <div class="error__inner">
-                <img src="img/error.png" alt="alt">
-                <h1>
-                    <strong>Something</strong> could not be found. <br>
-                    Please enter a different location.
-                </h1>
-            </div>
-
-        </article>
-
-
-
-    </div>
-
-
-
-
+    <script src="js/openWeatherAPI.js"></script>
     <script src="js/script.js"></script>
 </body>
 
