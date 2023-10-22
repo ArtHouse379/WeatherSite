@@ -81,6 +81,13 @@ body {
   color: #6a6a6a;
 }
 
+#current-city {
+  text-align: center;
+  text-decoration: underline;
+  color: #009595;
+  margin: 10px 0;
+}
+
 .header--name {
   color: #009595;
 }
