@@ -18,12 +18,18 @@ body {
   background-color: #d7d7d7;
 }
 
+header {
+  width: 100%;
+  background-color: #f6f6f6;
+}
+
 .header__top {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #f6f6f6;
 }
 .header__top .header__logo {
   color: #009595;
@@ -37,19 +43,25 @@ body {
 
 .header__menu {
   width: 100%;
-  padding: 0 20px;
   background-color: #404040;
   color: #fff;
+}
+.header__menu .menu__container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
   display: flex;
 }
 .header__menu .menu__item {
   padding: 10px 20px;
 }
 .header__menu .menu__item:hover {
-  border-left: 1px solid #d7d7d7;
-  border-right: 1px solid #d7d7d7;
-  border-bottom: 3px solid #009595;
+  border-left: 1px inset #d7d7d7;
+  border-right: 1px inset #d7d7d7;
+  border-bottom: 3px inset #009595;
   cursor: pointer;
+  padding: 8px 19px;
 }
 
 .container {
@@ -75,10 +87,14 @@ body {
 
 .current__content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  font-size: 14px;
+  text-align: center;
+  font-size: 15px;
   color: #6a6a6a;
+}
+.current__content div {
+  width: 30%;
 }
 
 #current-city {
@@ -120,8 +136,9 @@ body {
   color: #6a6a6a;
 }
 .nearby__weather--cities .nearby__city {
+  position: relative;
   margin: 5px;
-  padding: 5px 20px;
+  padding: 10px 20px;
   background-color: #e6e6e6;
   width: 48%;
   display: flex;
@@ -129,7 +146,9 @@ body {
   align-items: center;
 }
 .nearby__weather--cities .nearby__city img {
-  margin-left: 30%;
+  width: 30px;
+  position: absolute;
+  right: 60px;
 }
 
 .error__inner {
