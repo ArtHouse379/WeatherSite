@@ -15,7 +15,7 @@ window.addEventListener('keydown', (e) => {
         // when input has veryfite city name --- NOT COMPLETE
         // send GET-request by openweatherAPI for this city --- ++
         if (inputCityName.value) {
-            // getUserCityWeather(inputCityName.value);
+            getUserCityWeather(inputCityName.value);
             inputCityName.value = '';
         }
     };
@@ -36,8 +36,9 @@ function getUserCityWeather(cityName) {
             createFiveDayForecastArticle(data)
             createNearbyPlacesArticle(data)
             inputCityName.setAttribute('placeholder', `${data.city.name},${data.city.country}`)
-            // console.log(data);
+            console.log(data);
         })
+        .catch(error => createErrorArticle(error));
 };
 
 
@@ -188,14 +189,14 @@ function createHourlyWeatherArticle(weather) {
 }
 
 function getWindDirection(deg) {
-    if (deg > 340 && deg < 360 || deg > 0 && deg < 30) return 'N';
-    if (deg > 30 && deg < 70) return 'NE';
-    if (deg > 70 && deg < 110) return 'E';
-    if (deg > 110 && deg < 150) return 'SE';
-    if (deg > 150 && deg < 200) return 'S';
-    if (deg > 200 && deg < 240) return 'SW';
-    if (deg > 240 && deg < 290) return 'W';
-    if (deg > 290 && deg < 340) return 'NW';
+    if (deg >= 340 && deg < 360 || deg >= 0 && deg < 30) return 'N';
+    if (deg >= 30 && deg < 70) return 'NE';
+    if (deg >= 70 && deg < 110) return 'E';
+    if (deg >= 110 && deg < 150) return 'SE';
+    if (deg >= 150 && deg < 200) return 'S';
+    if (deg >= 200 && deg < 240) return 'SW';
+    if (deg >= 240 && deg < 290) return 'W';
+    if (deg >= 290 && deg < 340) return 'NW';
 }
 
 function createCurrentWeatherArticle(weather) {
@@ -203,7 +204,7 @@ function createCurrentWeatherArticle(weather) {
     if (el) el.remove();
 
     let date = new Date();
-    console.log(weather);
+
     let article = document.createElement('article');
     article.classList.add('current_weather');
 
