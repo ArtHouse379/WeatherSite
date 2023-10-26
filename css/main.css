@@ -18,6 +18,11 @@ body {
   background-color: #d7d7d7;
 }
 
+.header--name {
+  padding: 10px 0;
+  color: #009595;
+}
+
 header {
   width: 100%;
   background-color: #f6f6f6;
@@ -34,7 +39,7 @@ header {
 .header__top .header__logo {
   color: #009595;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
 }
 .header__top #city-search {
   width: 100%;
@@ -82,7 +87,10 @@ header {
   display: flex;
   justify-content: space-between;
   color: #009595;
-  padding: 10px 0;
+}
+
+.current__header--date {
+  padding-top: 10px;
 }
 
 .current__content {
@@ -104,12 +112,8 @@ header {
   margin: 10px 0;
 }
 
-.header--name {
-  color: #009595;
-}
-
 .hourly__weather--table {
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
