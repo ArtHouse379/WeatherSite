@@ -1,12 +1,12 @@
 let inputCityName = document.querySelector('#city-search');
 let container = document.querySelector('.container');
-getUserCityWeather('Odesa');
-
+let todayBtn = document.querySelector('#today');
+let fiveDayBtn = document.querySelector('#fiveDay');
+requestUserCityWeather('Odesa');
 
 inputCityName.addEventListener('input', () => {
     // when has input - make check text & propose a city list
 
-    // validateText();
 });
 
 window.addEventListener('keydown', (e) => {
@@ -15,35 +15,34 @@ window.addEventListener('keydown', (e) => {
         // when input has veryfite city name --- NOT COMPLETE
         // send GET-request by openweatherAPI for this city --- ++
         if (inputCityName.value) {
-            getUserCityWeather(inputCityName.value);
+            requestUserCityWeather(inputCityName.value);
             inputCityName.value = '';
         }
     };
 });
 
-function getCityName() {
+todayBtn.addEventListener('click', () => {
 
-}
+})
 
-function getUserCityWeather(cityName) {
+function requestUserCityWeather(cityName) {
     let apiKey = 'd92da9be11a9ff634c79675141a4ba5a';
     let url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`;
 
     fetchAsyncWeather(url)
         .then(data => {
-            createCurrentWeatherArticle(data)
-            createHourlyWeatherArticle(data)
-            createFiveDayForecastArticle(data)
-            createNearbyPlacesArticle(data)
+            showCurrentWeatherArticle(data)
+            showHourlyWeatherArticle(data)
+            showFiveDayForecastArticle(data)
+            showNearbyPlacesArticle(data)
             inputCityName.setAttribute('placeholder', `${data.city.name},${data.city.country}`)
             console.log(data);
         })
-        .catch(error => createErrorArticle(error));
+        .catch(error => showErrorArticle(error));
 };
 
 
-
-function createNearbyPlacesArticle(weather) {
+function showNearbyPlacesArticle(weather) {
     let el = document.querySelector('.nearby__weather');
     if (el) el.remove();
 
@@ -92,7 +91,11 @@ function createNearbyPlacesArticle(weather) {
 
 
 
-function createFiveDayForecastArticle(weather) {
+function getUserCityWeather(data) {
+
+}
+
+function showFiveDayForecastArticle(weather) {
     let el = document.querySelector('.fivedays__weather');
     if (el) el.remove();
 
@@ -124,7 +127,7 @@ function createFiveDayForecastArticle(weather) {
     container.append(article);
 }
 
-function createHourlyWeatherArticle(weather) {
+function showHourlyWeatherArticle(weather) {
     let data = weather.list;
 
     let el = document.querySelector('.hourly__weather');
@@ -199,11 +202,14 @@ function getWindDirection(deg) {
     if (deg >= 290 && deg < 340) return 'NW';
 }
 
-function createCurrentWeatherArticle(weather) {
+function showCurrentWeatherArticle(weather) {
     let el = document.querySelector('.current_weather');
     if (el) el.remove();
 
     let date = new Date();
+    let newDate = new Date(weather.city.sunrise);
+    console.log(newDate);
+
 
     let article = document.createElement('article');
     article.classList.add('current_weather');
@@ -232,7 +238,7 @@ function createCurrentWeatherArticle(weather) {
     container.prepend(article);
 }
 
-function createErrorArticle(error) {
+function showErrorArticle(error) {
     let article = document.createElement('article');
     article.classList.add('error');
 
