@@ -59,25 +59,25 @@ function showNearbyPlacesArticle(weather) {
             <div class="nearby__city">
                 <p>Baladzhary</p>
                 <img src="img/sun.png" alt="alt">
-                <p>36 C</p>
+                <p>36&deg;C</p>
             </div>
 
             <div class="nearby__city">
                 <p>Ballov</p>
                 <img src="img/sun.png" alt="alt">
-                <p>29 C</p>
+                <p>29&deg;C</p>
             </div>
 
             <div class="nearby__city">
                 <p>Badamdar</p>
                 <img src="img/sun.png" alt="alt">
-                <p>36 C</p>
+                <p>36&deg;C</p>
             </div>
 
             <div class="nearby__city">
                 <p>Cherni Gorod</p>
                 <img src="img/sun.png" alt="alt">
-                <p>29 C</p>
+                <p>29&deg;C</p>
             </div>
 
         </div>
@@ -89,11 +89,6 @@ function showNearbyPlacesArticle(weather) {
 
 
 
-
-
-function getUserCityWeather(data) {
-
-}
 
 function showFiveDayForecastArticle(weather) {
     let el = document.querySelector('.fivedays__weather');
@@ -116,7 +111,7 @@ function showFiveDayForecastArticle(weather) {
                 <h4 class="item__day">${new Date(el.dt_txt).toLocaleDateString('en-US', {weekday: 'short'})}</h4>
                 <p class="item__date">${new Date(el.dt_txt).toLocaleDateString('en-US', {month: 'short', day: '2-digit'})}</p>
                 <img src="http://openweathermap.org/img/w/${el.weather[0].icon}.png" alt="alt">
-                <h3 class="item__temp">${Math.round(el.main.temp)} C</h3>
+                <h3 class="item__temp">${Math.round(el.main.temp)}&deg;C</h3>
                 <p class="item__wind">${el.weather[0].description}</p>
             </div>
         `;
@@ -163,7 +158,7 @@ function showHourlyWeatherArticle(weather) {
             <div>${data[3].weather[0].main}</div>
             <div>${data[4].weather[0].main}</div>
             <div>${data[5].weather[0].main}</div>
-            <div class="weather__main--item">Temp(C)</div>
+            <div class="weather__main--item">Temp(&deg;C)</div>
             <div>${Math.round(data[1].main.temp)}</div>
             <div>${Math.round(data[2].main.temp)}</div>
             <div>${Math.round(data[3].main.temp)}</div>
@@ -206,10 +201,9 @@ function showCurrentWeatherArticle(weather) {
     let el = document.querySelector('.current_weather');
     if (el) el.remove();
 
-    let date = new Date();
-    let newDate = new Date(weather.city.sunrise);
-    console.log(newDate);
-
+    let date = new Date(),
+        sunset = new Date(weather.city.sunset * 1000).toLocaleTimeString(),
+        sunrise = new Date(weather.city.sunrise * 1000).toLocaleTimeString();
 
     let article = document.createElement('article');
     article.classList.add('current_weather');
@@ -225,11 +219,10 @@ function showCurrentWeatherArticle(weather) {
                     <img id="weather-icon" src="http://openweathermap.org/img/w/${weather.list[0].weather[0].icon}.png" alt="alt">
                     <p id="main-weather">${weather.list[0].weather[0].main}</p>
                 </div>
-                <div id="main-temp">${Math.round(weather.list[0].main.temp)} C</div>
+                <div id="main-temp">${Math.round(weather.list[0].main.temp)}&deg;C</div>
                 <div>
-                    <p>Sunrise: ${weather.city.sunrise}???</p>
-                    <p>Sunset: ${weather.city.sunset}???</p>
-                    <p>Duration:${weather.city.sunset - weather.city.sunrise}???</p>
+                    <p>Sunrise: ${sunrise}</p>
+                    <p>Sunset: ${sunset}</p>
                 </div>
             </div>
     `;
