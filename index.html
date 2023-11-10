@@ -11,14 +11,14 @@
 <body>
 
     <header>
-
+        <!-- logo & search input -->
         <div class="header__top">
-            <a class="header__logo" href="#">MY WEATHER</a>
+            <a class="header__logo" href="#" draggable="false">MY WEATHER</a>
             <div class="header__search">
-                <input type="search" name="geoposition" id="city-search" placeholder="city name (exmp. 'Odesa')">
+                <input type="search" name="geoposition" id="city-search" placeholder="city name (exmp. 'Odesa')" pattern="A-Za-z">
             </div>
         </div>
-
+        <!-- buttons for forecast choice -->
         <div class="header__menu">
             <div class="menu__container">
                 <div class="menu__item" id="today">Today</div>
@@ -28,10 +28,11 @@
 
     </header>
 
-    <main class="container"></main>
+    <main class="container">
+        <!-- Place for content. Today forecast or 5-days forecast. -->
+    </main>
 
-    <script src="js/openWeatherAPI.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/mvc.js"></script>
 </body>
 
 </html>
